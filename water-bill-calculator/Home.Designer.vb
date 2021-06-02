@@ -39,24 +39,31 @@ Partial Class Home
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.tab_enterUnits = New System.Windows.Forms.TabPage()
+        Me.tab_viewDetails = New System.Windows.Forms.TabPage()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txt_search = New System.Windows.Forms.TextBox()
+        Me.btn_loadTable = New System.Windows.Forms.Button()
+        Me.btn_search = New System.Windows.Forms.Button()
+        Me.dg_table = New System.Windows.Forms.DataGridView()
         Me.tab_registerAdmins = New System.Windows.Forms.TabPage()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txt_adminUsername = New System.Windows.Forms.TextBox()
-        Me.txt_adminPassword = New System.Windows.Forms.TextBox()
-        Me.btn_registerAdmin = New System.Windows.Forms.Button()
         Me.btn_adminClear = New System.Windows.Forms.Button()
+        Me.btn_registerAdmin = New System.Windows.Forms.Button()
+        Me.txt_adminPassword = New System.Windows.Forms.TextBox()
+        Me.txt_adminUsername = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tab_regsiter.SuspendLayout()
+        Me.tab_viewDetails.SuspendLayout()
+        CType(Me.dg_table, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_registerAdmins.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.tab_regsiter)
-        Me.TabControl1.Controls.Add(Me.tab_enterUnits)
+        Me.TabControl1.Controls.Add(Me.tab_viewDetails)
         Me.TabControl1.Controls.Add(Me.tab_registerAdmins)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
@@ -219,15 +226,63 @@ Partial Class Home
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Customer Name"
         '
-        'tab_enterUnits
+        'tab_viewDetails
         '
-        Me.tab_enterUnits.Location = New System.Drawing.Point(4, 22)
-        Me.tab_enterUnits.Name = "tab_enterUnits"
-        Me.tab_enterUnits.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_enterUnits.Size = New System.Drawing.Size(682, 488)
-        Me.tab_enterUnits.TabIndex = 1
-        Me.tab_enterUnits.Text = "Enter Units"
-        Me.tab_enterUnits.UseVisualStyleBackColor = True
+        Me.tab_viewDetails.Controls.Add(Me.Label9)
+        Me.tab_viewDetails.Controls.Add(Me.txt_search)
+        Me.tab_viewDetails.Controls.Add(Me.btn_loadTable)
+        Me.tab_viewDetails.Controls.Add(Me.btn_search)
+        Me.tab_viewDetails.Controls.Add(Me.dg_table)
+        Me.tab_viewDetails.Location = New System.Drawing.Point(4, 22)
+        Me.tab_viewDetails.Name = "tab_viewDetails"
+        Me.tab_viewDetails.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_viewDetails.Size = New System.Drawing.Size(682, 488)
+        Me.tab_viewDetails.TabIndex = 1
+        Me.tab_viewDetails.Text = "View Details"
+        Me.tab_viewDetails.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(159, 79)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(88, 13)
+        Me.Label9.TabIndex = 3
+        Me.Label9.Text = "Search Customer"
+        '
+        'txt_search
+        '
+        Me.txt_search.Location = New System.Drawing.Point(276, 76)
+        Me.txt_search.Name = "txt_search"
+        Me.txt_search.Size = New System.Drawing.Size(209, 20)
+        Me.txt_search.TabIndex = 2
+        '
+        'btn_loadTable
+        '
+        Me.btn_loadTable.Location = New System.Drawing.Point(316, 24)
+        Me.btn_loadTable.Name = "btn_loadTable"
+        Me.btn_loadTable.Size = New System.Drawing.Size(94, 23)
+        Me.btn_loadTable.TabIndex = 1
+        Me.btn_loadTable.Text = "View Full List"
+        Me.btn_loadTable.UseVisualStyleBackColor = True
+        '
+        'btn_search
+        '
+        Me.btn_search.Location = New System.Drawing.Point(512, 75)
+        Me.btn_search.Name = "btn_search"
+        Me.btn_search.Size = New System.Drawing.Size(75, 23)
+        Me.btn_search.TabIndex = 1
+        Me.btn_search.Text = "Search"
+        Me.btn_search.UseVisualStyleBackColor = True
+        '
+        'dg_table
+        '
+        Me.dg_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dg_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_table.Location = New System.Drawing.Point(118, 144)
+        Me.dg_table.Name = "dg_table"
+        Me.dg_table.Size = New System.Drawing.Size(527, 315)
+        Me.dg_table.TabIndex = 0
         '
         'tab_registerAdmins
         '
@@ -245,6 +300,56 @@ Partial Class Home
         Me.tab_registerAdmins.Text = "Regsiter Admins"
         Me.tab_registerAdmins.UseVisualStyleBackColor = True
         '
+        'btn_adminClear
+        '
+        Me.btn_adminClear.Location = New System.Drawing.Point(349, 282)
+        Me.btn_adminClear.Name = "btn_adminClear"
+        Me.btn_adminClear.Size = New System.Drawing.Size(75, 23)
+        Me.btn_adminClear.TabIndex = 3
+        Me.btn_adminClear.Text = "Clear"
+        Me.btn_adminClear.UseVisualStyleBackColor = True
+        '
+        'btn_registerAdmin
+        '
+        Me.btn_registerAdmin.Location = New System.Drawing.Point(245, 282)
+        Me.btn_registerAdmin.Name = "btn_registerAdmin"
+        Me.btn_registerAdmin.Size = New System.Drawing.Size(75, 23)
+        Me.btn_registerAdmin.TabIndex = 3
+        Me.btn_registerAdmin.Text = "Register"
+        Me.btn_registerAdmin.UseVisualStyleBackColor = True
+        '
+        'txt_adminPassword
+        '
+        Me.txt_adminPassword.Location = New System.Drawing.Point(294, 181)
+        Me.txt_adminPassword.Name = "txt_adminPassword"
+        Me.txt_adminPassword.Size = New System.Drawing.Size(147, 20)
+        Me.txt_adminPassword.TabIndex = 2
+        '
+        'txt_adminUsername
+        '
+        Me.txt_adminUsername.Location = New System.Drawing.Point(294, 114)
+        Me.txt_adminUsername.Name = "txt_adminUsername"
+        Me.txt_adminUsername.Size = New System.Drawing.Size(147, 20)
+        Me.txt_adminUsername.TabIndex = 2
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(190, 184)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(53, 13)
+        Me.Label8.TabIndex = 1
+        Me.Label8.Text = "Password"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(190, 117)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(55, 13)
+        Me.Label7.TabIndex = 1
+        Me.Label7.Text = "Username"
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -256,56 +361,6 @@ Partial Class Home
         Me.Label6.Size = New System.Drawing.Size(169, 25)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Register Admins"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(190, 117)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(55, 13)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Text = "Username"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(190, 184)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(53, 13)
-        Me.Label8.TabIndex = 1
-        Me.Label8.Text = "Password"
-        '
-        'txt_adminUsername
-        '
-        Me.txt_adminUsername.Location = New System.Drawing.Point(294, 114)
-        Me.txt_adminUsername.Name = "txt_adminUsername"
-        Me.txt_adminUsername.Size = New System.Drawing.Size(147, 20)
-        Me.txt_adminUsername.TabIndex = 2
-        '
-        'txt_adminPassword
-        '
-        Me.txt_adminPassword.Location = New System.Drawing.Point(294, 181)
-        Me.txt_adminPassword.Name = "txt_adminPassword"
-        Me.txt_adminPassword.Size = New System.Drawing.Size(147, 20)
-        Me.txt_adminPassword.TabIndex = 2
-        '
-        'btn_registerAdmin
-        '
-        Me.btn_registerAdmin.Location = New System.Drawing.Point(245, 282)
-        Me.btn_registerAdmin.Name = "btn_registerAdmin"
-        Me.btn_registerAdmin.Size = New System.Drawing.Size(75, 23)
-        Me.btn_registerAdmin.TabIndex = 3
-        Me.btn_registerAdmin.Text = "Register"
-        Me.btn_registerAdmin.UseVisualStyleBackColor = True
-        '
-        'btn_adminClear
-        '
-        Me.btn_adminClear.Location = New System.Drawing.Point(349, 282)
-        Me.btn_adminClear.Name = "btn_adminClear"
-        Me.btn_adminClear.Size = New System.Drawing.Size(75, 23)
-        Me.btn_adminClear.TabIndex = 3
-        Me.btn_adminClear.Text = "Clear"
-        Me.btn_adminClear.UseVisualStyleBackColor = True
         '
         'Home
         '
@@ -319,6 +374,9 @@ Partial Class Home
         Me.TabControl1.ResumeLayout(False)
         Me.tab_regsiter.ResumeLayout(False)
         Me.tab_regsiter.PerformLayout()
+        Me.tab_viewDetails.ResumeLayout(False)
+        Me.tab_viewDetails.PerformLayout()
+        CType(Me.dg_table, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_registerAdmins.ResumeLayout(False)
         Me.tab_registerAdmins.PerformLayout()
         Me.ResumeLayout(False)
@@ -327,7 +385,7 @@ Partial Class Home
 
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents tab_regsiter As TabPage
-    Friend WithEvents tab_enterUnits As TabPage
+    Friend WithEvents tab_viewDetails As TabPage
     Friend WithEvents tab_registerAdmins As TabPage
     Friend WithEvents Label5 As Label
     Friend WithEvents btn_registerClear As Button
@@ -351,4 +409,9 @@ Partial Class Home
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents dg_table As DataGridView
+    Friend WithEvents Label9 As Label
+    Friend WithEvents txt_search As TextBox
+    Friend WithEvents btn_search As Button
+    Friend WithEvents btn_loadTable As Button
 End Class

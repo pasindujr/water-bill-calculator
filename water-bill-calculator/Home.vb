@@ -99,4 +99,35 @@ Public Class Home
         txt_adminUsername.Clear()
         txt_adminPassword.Clear()
     End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg_table.CellContentClick
+
+    End Sub
+
+    Private Sub btn_loadTable_Click(sender As Object, e As EventArgs) Handles btn_loadTable.Click
+        mySqlConnection = New MySqlConnection
+        mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbDataSet As New DataTable
+        Dim bSource As New BindingSource
+
+        Try
+            mySqlConnection.Open()
+            Dim query As String
+            query = "select * from waterbill.customers"
+            command = New MySqlCommand(query, mySqlConnection)
+            sda.SelectCommand = command
+            sda.Fill(dbDataSet)
+            bSource.DataSource = dbDataSet
+            dg_table.DataSource = bSource
+            sda.Update(dbDataSet)
+
+            mySqlConnection.Close()
+        Catch ex As MySqlException
+            MessageBox.Show(ex.Message)
+        Finally
+            mySqlConnection.Dispose()
+        End Try
+    End Sub
 End Class
