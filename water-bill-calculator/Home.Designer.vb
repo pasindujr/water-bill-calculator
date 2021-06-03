@@ -52,6 +52,17 @@ Partial Class Home
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.txt_updateName = New System.Windows.Forms.TextBox()
+        Me.txt_updateAddress = New System.Windows.Forms.TextBox()
+        Me.txt_updateEmail = New System.Windows.Forms.TextBox()
+        Me.lbl_updateName = New System.Windows.Forms.Label()
+        Me.lbl_updateAddress = New System.Windows.Forms.Label()
+        Me.lbl_updateEmail = New System.Windows.Forms.Label()
+        Me.btn_update = New System.Windows.Forms.Button()
+        Me.btn_delete = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lbl_updateBill = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tab_regsiter.SuspendLayout()
         Me.tab_viewDetails.SuspendLayout()
@@ -227,6 +238,17 @@ Partial Class Home
         '
         'tab_viewDetails
         '
+        Me.tab_viewDetails.Controls.Add(Me.btn_delete)
+        Me.tab_viewDetails.Controls.Add(Me.btn_update)
+        Me.tab_viewDetails.Controls.Add(Me.lbl_updateEmail)
+        Me.tab_viewDetails.Controls.Add(Me.lbl_updateAddress)
+        Me.tab_viewDetails.Controls.Add(Me.Label12)
+        Me.tab_viewDetails.Controls.Add(Me.lbl_updateBill)
+        Me.tab_viewDetails.Controls.Add(Me.Label10)
+        Me.tab_viewDetails.Controls.Add(Me.lbl_updateName)
+        Me.tab_viewDetails.Controls.Add(Me.txt_updateEmail)
+        Me.tab_viewDetails.Controls.Add(Me.txt_updateAddress)
+        Me.tab_viewDetails.Controls.Add(Me.txt_updateName)
         Me.tab_viewDetails.Controls.Add(Me.Label9)
         Me.tab_viewDetails.Controls.Add(Me.txt_search)
         Me.tab_viewDetails.Controls.Add(Me.btn_loadTable)
@@ -236,13 +258,13 @@ Partial Class Home
         Me.tab_viewDetails.Padding = New System.Windows.Forms.Padding(3)
         Me.tab_viewDetails.Size = New System.Drawing.Size(682, 488)
         Me.tab_viewDetails.TabIndex = 1
-        Me.tab_viewDetails.Text = "View Details"
+        Me.tab_viewDetails.Text = "View and Update"
         Me.tab_viewDetails.UseVisualStyleBackColor = True
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(163, 91)
+        Me.Label9.Location = New System.Drawing.Point(268, 115)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(86, 13)
         Me.Label9.TabIndex = 3
@@ -250,14 +272,14 @@ Partial Class Home
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(280, 88)
+        Me.txt_search.Location = New System.Drawing.Point(385, 112)
         Me.txt_search.Name = "txt_search"
         Me.txt_search.Size = New System.Drawing.Size(209, 20)
         Me.txt_search.TabIndex = 1
         '
         'btn_loadTable
         '
-        Me.btn_loadTable.Location = New System.Drawing.Point(320, 36)
+        Me.btn_loadTable.Location = New System.Drawing.Point(425, 60)
         Me.btn_loadTable.Name = "btn_loadTable"
         Me.btn_loadTable.Size = New System.Drawing.Size(94, 23)
         Me.btn_loadTable.TabIndex = 0
@@ -268,9 +290,9 @@ Partial Class Home
         '
         Me.dg_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_table.Location = New System.Drawing.Point(118, 195)
+        Me.dg_table.Location = New System.Drawing.Point(266, 149)
         Me.dg_table.Name = "dg_table"
-        Me.dg_table.Size = New System.Drawing.Size(527, 249)
+        Me.dg_table.Size = New System.Drawing.Size(365, 249)
         Me.dg_table.TabIndex = 0
         '
         'tab_registerAdmins
@@ -351,6 +373,98 @@ Partial Class Home
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Register Admins"
         '
+        'txt_updateName
+        '
+        Me.txt_updateName.Location = New System.Drawing.Point(119, 187)
+        Me.txt_updateName.Name = "txt_updateName"
+        Me.txt_updateName.Size = New System.Drawing.Size(100, 20)
+        Me.txt_updateName.TabIndex = 2
+        '
+        'txt_updateAddress
+        '
+        Me.txt_updateAddress.Location = New System.Drawing.Point(119, 234)
+        Me.txt_updateAddress.Name = "txt_updateAddress"
+        Me.txt_updateAddress.Size = New System.Drawing.Size(100, 20)
+        Me.txt_updateAddress.TabIndex = 3
+        '
+        'txt_updateEmail
+        '
+        Me.txt_updateEmail.Location = New System.Drawing.Point(119, 286)
+        Me.txt_updateEmail.Name = "txt_updateEmail"
+        Me.txt_updateEmail.Size = New System.Drawing.Size(100, 20)
+        Me.txt_updateEmail.TabIndex = 4
+        '
+        'lbl_updateName
+        '
+        Me.lbl_updateName.AutoSize = True
+        Me.lbl_updateName.Location = New System.Drawing.Point(26, 190)
+        Me.lbl_updateName.Name = "lbl_updateName"
+        Me.lbl_updateName.Size = New System.Drawing.Size(82, 13)
+        Me.lbl_updateName.TabIndex = 5
+        Me.lbl_updateName.Text = "Customer Name"
+        '
+        'lbl_updateAddress
+        '
+        Me.lbl_updateAddress.AutoSize = True
+        Me.lbl_updateAddress.Location = New System.Drawing.Point(26, 237)
+        Me.lbl_updateAddress.Name = "lbl_updateAddress"
+        Me.lbl_updateAddress.Size = New System.Drawing.Size(45, 13)
+        Me.lbl_updateAddress.TabIndex = 5
+        Me.lbl_updateAddress.Text = "Address"
+        '
+        'lbl_updateEmail
+        '
+        Me.lbl_updateEmail.AutoSize = True
+        Me.lbl_updateEmail.Location = New System.Drawing.Point(27, 289)
+        Me.lbl_updateEmail.Name = "lbl_updateEmail"
+        Me.lbl_updateEmail.Size = New System.Drawing.Size(32, 13)
+        Me.lbl_updateEmail.TabIndex = 5
+        Me.lbl_updateEmail.Text = "Email"
+        '
+        'btn_update
+        '
+        Me.btn_update.Location = New System.Drawing.Point(33, 355)
+        Me.btn_update.Name = "btn_update"
+        Me.btn_update.Size = New System.Drawing.Size(75, 23)
+        Me.btn_update.TabIndex = 5
+        Me.btn_update.Text = "Update"
+        Me.btn_update.UseVisualStyleBackColor = True
+        '
+        'btn_delete
+        '
+        Me.btn_delete.Location = New System.Drawing.Point(132, 355)
+        Me.btn_delete.Name = "btn_delete"
+        Me.btn_delete.Size = New System.Drawing.Size(75, 23)
+        Me.btn_delete.TabIndex = 6
+        Me.btn_delete.Text = "Delete"
+        Me.btn_delete.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(26, 149)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(68, 13)
+        Me.Label10.TabIndex = 5
+        Me.Label10.Text = "Waterbill No."
+        '
+        'lbl_updateBill
+        '
+        Me.lbl_updateBill.AutoSize = True
+        Me.lbl_updateBill.Location = New System.Drawing.Point(129, 149)
+        Me.lbl_updateBill.Name = "lbl_updateBill"
+        Me.lbl_updateBill.Size = New System.Drawing.Size(7, 13)
+        Me.lbl_updateBill.TabIndex = 5
+        Me.lbl_updateBill.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(116, 149)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(0, 13)
+        Me.Label12.TabIndex = 5
+        '
         'Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -402,4 +516,15 @@ Partial Class Home
     Friend WithEvents Label9 As Label
     Friend WithEvents txt_search As TextBox
     Friend WithEvents btn_loadTable As Button
+    Friend WithEvents btn_delete As Button
+    Friend WithEvents btn_update As Button
+    Friend WithEvents lbl_updateEmail As Label
+    Friend WithEvents lbl_updateAddress As Label
+    Friend WithEvents lbl_updateName As Label
+    Friend WithEvents txt_updateEmail As TextBox
+    Friend WithEvents txt_updateAddress As TextBox
+    Friend WithEvents txt_updateName As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents lbl_updateBill As Label
+    Friend WithEvents Label10 As Label
 End Class

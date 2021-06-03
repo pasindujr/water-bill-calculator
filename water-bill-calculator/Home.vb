@@ -38,6 +38,7 @@ Public Class Home
     End Function
 
     Private Sub btn_registerSubmit_Click(sender As Object, e As EventArgs) Handles btn_registerSubmit.Click
+        mySqlConnection = New MySqlConnection
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
         Dim reader As MySqlDataReader
 
@@ -49,7 +50,7 @@ Public Class Home
             query = "insert into waterbill.customers (customer_name, customer_address, customer_email, water_bill_number, month, no_of_units, charge) values ('" & txt_customerName.Text & "', '" & txt_address.Text & "', '" & txt_email.Text & "', '" & txt_billNumber.Text & "', '" & select_month.Text & "', '" & txt_units.Text & "', '" & calBill(units) & "')"
             command = New MySqlCommand(query, mySqlConnection)
             reader = command.ExecuteReader()
-            MessageBox.Show("New customer added")
+            MessageBox.Show("New customer and details added")
             mySqlConnection.Close()
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
@@ -102,7 +103,15 @@ Public Class Home
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg_table.CellContentClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow
+            row = Me.dg_table.Rows(e.RowIndex)
 
+            lbl_updateBill.Text = row.Cells("water_bill_number").Value
+            txt_updateName.Text = row.Cells("customer_name").Value.ToString
+            txt_updateAddress.Text = row.Cells("customer_address").Value.ToString
+            txt_updateEmail.Text = row.Cells("customer_email").Value.ToString
+        End If
     End Sub
 
     Private Sub btn_loadTable_Click(sender As Object, e As EventArgs) Handles btn_loadTable.Click
@@ -139,9 +148,29 @@ Public Class Home
 
     Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
 
-        Dim dv As New DataView(dbDataSet)
-        dv.RowFilter = String.Format("customer_name = {0}", txt_search.Text)
-        dg_table.DataSource = dv
+
+    End Sub
+
+    Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
+
+        mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
+        Dim reader As MySqlDataReader
+
+
+        Try
+            mySqlConnection.Open()
+            Dim query As String
+            query = "update waterbill.customers set customer_name ='" & txt_updateName.Text & "',customer_address='" & txt_updateAddress.Text & "',customer_email='" & txt_updateEmail.Text & "' where water_bill_number ='" & lbl_updateBill.Text & "'"
+            command = New MySqlCommand(query, mySqlConnection)
+            reader = command.ExecuteReader
+            MessageBox.Show("Details Updated")
+            mySqlConnection.Close()
+        Catch ex As MySqlException
+            MessageBox.Show(ex.Message)
+
+        Finally
+            mySqlConnection.Dispose()
+        End Try
 
     End Sub
 End Class
