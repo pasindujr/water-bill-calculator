@@ -43,7 +43,6 @@ Partial Class Home
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.btn_loadTable = New System.Windows.Forms.Button()
-        Me.btn_search = New System.Windows.Forms.Button()
         Me.dg_table = New System.Windows.Forms.DataGridView()
         Me.tab_registerAdmins = New System.Windows.Forms.TabPage()
         Me.btn_adminClear = New System.Windows.Forms.Button()
@@ -70,7 +69,7 @@ Partial Class Home
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(690, 514)
-        Me.TabControl1.TabIndex = 6
+        Me.TabControl1.TabIndex = 0
         '
         'tab_regsiter
         '
@@ -104,7 +103,7 @@ Partial Class Home
         Me.select_month.Location = New System.Drawing.Point(282, 311)
         Me.select_month.Name = "select_month"
         Me.select_month.Size = New System.Drawing.Size(121, 21)
-        Me.select_month.TabIndex = 14
+        Me.select_month.TabIndex = 5
         Me.select_month.Text = "Select month"
         '
         'Label5
@@ -115,7 +114,7 @@ Partial Class Home
         Me.Label5.Location = New System.Drawing.Point(200, 19)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(249, 25)
-        Me.Label5.TabIndex = 13
+        Me.Label5.TabIndex = 0
         Me.Label5.Text = "Register New Customers"
         '
         'btn_registerClear
@@ -123,7 +122,7 @@ Partial Class Home
         Me.btn_registerClear.Location = New System.Drawing.Point(389, 401)
         Me.btn_registerClear.Name = "btn_registerClear"
         Me.btn_registerClear.Size = New System.Drawing.Size(75, 23)
-        Me.btn_registerClear.TabIndex = 11
+        Me.btn_registerClear.TabIndex = 8
         Me.btn_registerClear.Text = "Clear"
         Me.btn_registerClear.UseVisualStyleBackColor = True
         '
@@ -132,7 +131,7 @@ Partial Class Home
         Me.btn_registerSubmit.Location = New System.Drawing.Point(252, 401)
         Me.btn_registerSubmit.Name = "btn_registerSubmit"
         Me.btn_registerSubmit.Size = New System.Drawing.Size(75, 23)
-        Me.btn_registerSubmit.TabIndex = 12
+        Me.btn_registerSubmit.TabIndex = 7
         Me.btn_registerSubmit.Text = "Submit"
         Me.btn_registerSubmit.UseVisualStyleBackColor = True
         '
@@ -141,21 +140,21 @@ Partial Class Home
         Me.txt_units.Location = New System.Drawing.Point(282, 355)
         Me.txt_units.Name = "txt_units"
         Me.txt_units.Size = New System.Drawing.Size(217, 20)
-        Me.txt_units.TabIndex = 7
+        Me.txt_units.TabIndex = 6
         '
         'txt_billNumber
         '
         Me.txt_billNumber.Location = New System.Drawing.Point(282, 264)
         Me.txt_billNumber.Name = "txt_billNumber"
         Me.txt_billNumber.Size = New System.Drawing.Size(217, 20)
-        Me.txt_billNumber.TabIndex = 7
+        Me.txt_billNumber.TabIndex = 4
         '
         'txt_email
         '
         Me.txt_email.Location = New System.Drawing.Point(282, 221)
         Me.txt_email.Name = "txt_email"
         Me.txt_email.Size = New System.Drawing.Size(217, 20)
-        Me.txt_email.TabIndex = 8
+        Me.txt_email.TabIndex = 3
         '
         'txt_address
         '
@@ -163,14 +162,14 @@ Partial Class Home
         Me.txt_address.Multiline = True
         Me.txt_address.Name = "txt_address"
         Me.txt_address.Size = New System.Drawing.Size(217, 64)
-        Me.txt_address.TabIndex = 9
+        Me.txt_address.TabIndex = 2
         '
         'txt_customerName
         '
         Me.txt_customerName.Location = New System.Drawing.Point(282, 88)
         Me.txt_customerName.Name = "txt_customerName"
         Me.txt_customerName.Size = New System.Drawing.Size(217, 20)
-        Me.txt_customerName.TabIndex = 10
+        Me.txt_customerName.TabIndex = 1
         '
         'lbl_month
         '
@@ -231,7 +230,6 @@ Partial Class Home
         Me.tab_viewDetails.Controls.Add(Me.Label9)
         Me.tab_viewDetails.Controls.Add(Me.txt_search)
         Me.tab_viewDetails.Controls.Add(Me.btn_loadTable)
-        Me.tab_viewDetails.Controls.Add(Me.btn_search)
         Me.tab_viewDetails.Controls.Add(Me.dg_table)
         Me.tab_viewDetails.Location = New System.Drawing.Point(4, 22)
         Me.tab_viewDetails.Name = "tab_viewDetails"
@@ -244,44 +242,35 @@ Partial Class Home
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(159, 79)
+        Me.Label9.Location = New System.Drawing.Point(163, 91)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(88, 13)
+        Me.Label9.Size = New System.Drawing.Size(86, 13)
         Me.Label9.TabIndex = 3
-        Me.Label9.Text = "Search Customer"
+        Me.Label9.Text = "Search by Name"
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(276, 76)
+        Me.txt_search.Location = New System.Drawing.Point(280, 88)
         Me.txt_search.Name = "txt_search"
         Me.txt_search.Size = New System.Drawing.Size(209, 20)
-        Me.txt_search.TabIndex = 2
+        Me.txt_search.TabIndex = 1
         '
         'btn_loadTable
         '
-        Me.btn_loadTable.Location = New System.Drawing.Point(316, 24)
+        Me.btn_loadTable.Location = New System.Drawing.Point(320, 36)
         Me.btn_loadTable.Name = "btn_loadTable"
         Me.btn_loadTable.Size = New System.Drawing.Size(94, 23)
-        Me.btn_loadTable.TabIndex = 1
+        Me.btn_loadTable.TabIndex = 0
         Me.btn_loadTable.Text = "View Full List"
         Me.btn_loadTable.UseVisualStyleBackColor = True
-        '
-        'btn_search
-        '
-        Me.btn_search.Location = New System.Drawing.Point(512, 75)
-        Me.btn_search.Name = "btn_search"
-        Me.btn_search.Size = New System.Drawing.Size(75, 23)
-        Me.btn_search.TabIndex = 1
-        Me.btn_search.Text = "Search"
-        Me.btn_search.UseVisualStyleBackColor = True
         '
         'dg_table
         '
         Me.dg_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_table.Location = New System.Drawing.Point(118, 144)
+        Me.dg_table.Location = New System.Drawing.Point(118, 195)
         Me.dg_table.Name = "dg_table"
-        Me.dg_table.Size = New System.Drawing.Size(527, 315)
+        Me.dg_table.Size = New System.Drawing.Size(527, 249)
         Me.dg_table.TabIndex = 0
         '
         'tab_registerAdmins
@@ -314,7 +303,7 @@ Partial Class Home
         Me.btn_registerAdmin.Location = New System.Drawing.Point(245, 282)
         Me.btn_registerAdmin.Name = "btn_registerAdmin"
         Me.btn_registerAdmin.Size = New System.Drawing.Size(75, 23)
-        Me.btn_registerAdmin.TabIndex = 3
+        Me.btn_registerAdmin.TabIndex = 2
         Me.btn_registerAdmin.Text = "Register"
         Me.btn_registerAdmin.UseVisualStyleBackColor = True
         '
@@ -323,14 +312,14 @@ Partial Class Home
         Me.txt_adminPassword.Location = New System.Drawing.Point(294, 181)
         Me.txt_adminPassword.Name = "txt_adminPassword"
         Me.txt_adminPassword.Size = New System.Drawing.Size(147, 20)
-        Me.txt_adminPassword.TabIndex = 2
+        Me.txt_adminPassword.TabIndex = 1
         '
         'txt_adminUsername
         '
         Me.txt_adminUsername.Location = New System.Drawing.Point(294, 114)
         Me.txt_adminUsername.Name = "txt_adminUsername"
         Me.txt_adminUsername.Size = New System.Drawing.Size(147, 20)
-        Me.txt_adminUsername.TabIndex = 2
+        Me.txt_adminUsername.TabIndex = 0
         '
         'Label8
         '
@@ -412,6 +401,5 @@ Partial Class Home
     Friend WithEvents dg_table As DataGridView
     Friend WithEvents Label9 As Label
     Friend WithEvents txt_search As TextBox
-    Friend WithEvents btn_search As Button
     Friend WithEvents btn_loadTable As Button
 End Class

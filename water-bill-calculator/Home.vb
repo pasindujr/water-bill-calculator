@@ -3,6 +3,8 @@
 Public Class Home
     Dim mySqlConnection As MySqlConnection
     Dim command As MySqlCommand
+    Dim dbDataSet As New DataTable
+
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -36,7 +38,6 @@ Public Class Home
     End Function
 
     Private Sub btn_registerSubmit_Click(sender As Object, e As EventArgs) Handles btn_registerSubmit.Click
-        mySqlConnection = New MySqlConnection
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
         Dim reader As MySqlDataReader
 
@@ -109,7 +110,6 @@ Public Class Home
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
 
         Dim sda As New MySqlDataAdapter
-        Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
 
         Try
@@ -129,5 +129,19 @@ Public Class Home
         Finally
             mySqlConnection.Dispose()
         End Try
+    End Sub
+
+    Private Sub btn_deleteRow_Click(sender As Object, e As EventArgs)
+        Dim index As Integer
+        index = dg_table.CurrentCell.RowIndex
+        dg_table.Rows.RemoveAt(index)
+    End Sub
+
+    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
+
+        Dim dv As New DataView(dbDataSet)
+        dv.RowFilter = String.Format("customer_name = {0}", txt_search.Text)
+        dg_table.DataSource = dv
+
     End Sub
 End Class
