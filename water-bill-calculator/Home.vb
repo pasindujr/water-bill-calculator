@@ -6,6 +6,7 @@ Public Class Home
     Dim dbDataSet As New DataTable
 
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        loadTable()
 
     End Sub
 
@@ -46,17 +47,21 @@ Public Class Home
         Try
             mySqlConnection.Open()
             Dim query As String
-            Dim units As Double = txt_units.Text
-            query = "insert into waterbill.customers (customer_name, customer_address, customer_email, water_bill_number, month, no_of_units, charge) values ('" & txt_customerName.Text & "', '" & txt_address.Text & "', '" & txt_email.Text & "', '" & txt_billNumber.Text & "', '" & select_month.Text & "', '" & txt_units.Text & "', '" & calBill(units) & "')"
-            command = New MySqlCommand(query, mySqlConnection)
-            reader = command.ExecuteReader()
-            MessageBox.Show("New customer and details added")
-            mySqlConnection.Close()
+            Try
+                Dim units As Double = txt_units.Text
+                query = "insert into waterbill.customers (customer_name, customer_address, customer_email, water_bill_number, month, no_of_units, charge) values ('" & txt_customerName.Text & "', '" & txt_address.Text & "', '" & txt_email.Text & "', '" & txt_billNumber.Text & "', '" & select_month.Text & "', '" & txt_units.Text & "', '" & calBill(units) & "')"
+                command = New MySqlCommand(query, mySqlConnection)
+                reader = command.ExecuteReader()
+                MessageBox.Show("New customer and details added")
+                mySqlConnection.Close()
+            Catch ex As Exception
+                MessageBox.Show("Enter valid unit")
+            End Try
         Catch ex As MySqlException
-            MessageBox.Show(ex.Message)
+                MessageBox.Show(ex.Message)
 
-        Finally
-            mySqlConnection.Dispose()
+            Finally
+                mySqlConnection.Dispose()
         End Try
     End Sub
 
@@ -114,7 +119,8 @@ Public Class Home
         End If
     End Sub
 
-    Private Sub btn_loadTable_Click(sender As Object, e As EventArgs) Handles btn_loadTable.Click
+    Private Sub loadTable()
+
         mySqlConnection = New MySqlConnection
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
 
@@ -138,6 +144,12 @@ Public Class Home
         Finally
             mySqlConnection.Dispose()
         End Try
+
+    End Sub
+
+    Private Sub btn_loadTable_Click(sender As Object, e As EventArgs) Handles btn_loadTable.Click
+        loadTable()
+
     End Sub
 
     Private Sub btn_deleteRow_Click(sender As Object, e As EventArgs)
@@ -152,7 +164,6 @@ Public Class Home
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
-
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
         Dim reader As MySqlDataReader
 
@@ -171,6 +182,32 @@ Public Class Home
         Finally
             mySqlConnection.Dispose()
         End Try
+
+        loadTable()
+    End Sub
+
+    Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
+        mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
+        Dim reader As MySqlDataReader
+
+
+        Try
+            mySqlConnection.Open()
+            Dim query As String
+            query = "delete from waterbill.customers where water_bill_number ='" & lbl_updateBill.Text & "'"
+            command = New MySqlCommand(query, mySqlConnection)
+            reader = command.ExecuteReader
+            MessageBox.Show("Details Deleted")
+            mySqlConnection.Close()
+        Catch ex As MySqlException
+            MessageBox.Show(ex.Message)
+
+        Finally
+            mySqlConnection.Dispose()
+        End Try
+    End Sub
+
+    Private Sub tab_viewDetails_Click(sender As Object, e As EventArgs) Handles tab_viewDetails.Click
 
     End Sub
 End Class
