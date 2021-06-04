@@ -58,11 +58,12 @@ Public Class Home
                 MessageBox.Show("Enter valid unit")
             End Try
         Catch ex As MySqlException
-                MessageBox.Show(ex.Message)
+            MessageBox.Show(ex.Message)
 
-            Finally
-                mySqlConnection.Dispose()
+        Finally
+            mySqlConnection.Dispose()
         End Try
+        loadTable()
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles lbl_units.Click, lbl_month.Click
@@ -120,11 +121,15 @@ Public Class Home
     End Sub
 
     Private Sub loadTable()
-
+        dbDataSet.Clear()
+        dg_table.DataSource = dbDataSet
+        dg_table.DataSource = Nothing
         mySqlConnection = New MySqlConnection
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
 
+
         Dim sda As New MySqlDataAdapter
+
         Dim bSource As New BindingSource
 
         Try
@@ -143,11 +148,12 @@ Public Class Home
             MessageBox.Show(ex.Message)
         Finally
             mySqlConnection.Dispose()
+
         End Try
 
     End Sub
 
-    Private Sub btn_loadTable_Click(sender As Object, e As EventArgs) Handles btn_loadTable.Click
+    Private Sub btn_loadTable_Click(sender As Object, e As EventArgs)
         loadTable()
 
     End Sub
@@ -158,10 +164,6 @@ Public Class Home
         dg_table.Rows.RemoveAt(index)
     End Sub
 
-    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
-
-
-    End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
@@ -176,6 +178,7 @@ Public Class Home
             reader = command.ExecuteReader
             MessageBox.Show("Details Updated")
             mySqlConnection.Close()
+            loadTable()
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
 
@@ -183,7 +186,6 @@ Public Class Home
             mySqlConnection.Dispose()
         End Try
 
-        loadTable()
     End Sub
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
@@ -205,9 +207,32 @@ Public Class Home
         Finally
             mySqlConnection.Dispose()
         End Try
+        loadTable()
     End Sub
 
     Private Sub tab_viewDetails_Click(sender As Object, e As EventArgs) Handles tab_viewDetails.Click
 
+    End Sub
+
+    Private Sub txt_billNumber_TextChanged(sender As Object, e As EventArgs) Handles txt_billNumber.TextChanged
+
+    End Sub
+
+    Private Sub txt_billNumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_billNumber.KeyPress
+        e.Handled = onlyNumeric(Asc(e.KeyChar))
+    End Sub
+
+    Private Sub txt_units_TextChanged(sender As Object, e As EventArgs) Handles txt_units.TextChanged
+
+    End Sub
+
+    Private Sub txt_units_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_units.KeyPress
+        e.Handled = onlyNumeric(Asc(e.KeyChar))
+    End Sub
+
+    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
+        Dim dv As New DataView(dbDataSet)
+        dv.RowFilter = String.Format("customer_name like '%{0}%'", txt_search.Text)
+        dg_table.DataSource = dv
     End Sub
 End Class

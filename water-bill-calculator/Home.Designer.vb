@@ -53,7 +53,6 @@ Partial Class Home
         Me.txt_updateName = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txt_search = New System.Windows.Forms.TextBox()
-        Me.btn_loadTable = New System.Windows.Forms.Button()
         Me.dg_table = New System.Windows.Forms.DataGridView()
         Me.tab_registerAdmins = New System.Windows.Forms.TabPage()
         Me.btn_adminClear = New System.Windows.Forms.Button()
@@ -251,7 +250,6 @@ Partial Class Home
         Me.tab_viewDetails.Controls.Add(Me.txt_updateName)
         Me.tab_viewDetails.Controls.Add(Me.Label9)
         Me.tab_viewDetails.Controls.Add(Me.txt_search)
-        Me.tab_viewDetails.Controls.Add(Me.btn_loadTable)
         Me.tab_viewDetails.Controls.Add(Me.dg_table)
         Me.tab_viewDetails.Location = New System.Drawing.Point(4, 22)
         Me.tab_viewDetails.Name = "tab_viewDetails"
@@ -356,7 +354,7 @@ Partial Class Home
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(268, 115)
+        Me.Label9.Location = New System.Drawing.Point(263, 106)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(86, 13)
         Me.Label9.TabIndex = 3
@@ -364,19 +362,10 @@ Partial Class Home
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(385, 112)
+        Me.txt_search.Location = New System.Drawing.Point(370, 103)
         Me.txt_search.Name = "txt_search"
-        Me.txt_search.Size = New System.Drawing.Size(209, 20)
+        Me.txt_search.Size = New System.Drawing.Size(164, 20)
         Me.txt_search.TabIndex = 1
-        '
-        'btn_loadTable
-        '
-        Me.btn_loadTable.Location = New System.Drawing.Point(425, 60)
-        Me.btn_loadTable.Name = "btn_loadTable"
-        Me.btn_loadTable.Size = New System.Drawing.Size(94, 23)
-        Me.btn_loadTable.TabIndex = 0
-        Me.btn_loadTable.Text = "View Full List"
-        Me.btn_loadTable.UseVisualStyleBackColor = True
         '
         'dg_table
         '
@@ -515,7 +504,6 @@ Partial Class Home
     Friend WithEvents dg_table As DataGridView
     Friend WithEvents Label9 As Label
     Friend WithEvents txt_search As TextBox
-    Friend WithEvents btn_loadTable As Button
     Friend WithEvents btn_delete As Button
     Friend WithEvents btn_update As Button
     Friend WithEvents lbl_updateEmail As Label
