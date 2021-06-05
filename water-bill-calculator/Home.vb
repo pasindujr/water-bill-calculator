@@ -222,9 +222,6 @@ Public Class Home
         e.Handled = onlyNumeric(Asc(e.KeyChar))
     End Sub
 
-    Private Sub txt_units_TextChanged(sender As Object, e As EventArgs) Handles txt_units.TextChanged
-
-    End Sub
 
     Private Sub txt_units_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_units.KeyPress
         e.Handled = onlyNumeric(Asc(e.KeyChar))
@@ -235,4 +232,20 @@ Public Class Home
         dv.RowFilter = String.Format("customer_name like '%{0}%'", txt_search.Text)
         dg_table.DataSource = dv
     End Sub
+
+    Private Sub btn_tab1_Click(sender As Object, e As EventArgs) Handles btn_tab1.Click
+        TabControl1.SelectTab(0)
+    End Sub
+
+    Private Sub btn_tab2_Click(sender As Object, e As EventArgs) Handles btn_tab2.Click
+        TabControl1.SelectTab(1)
+        lbl_where.Text = "View and Update"
+    End Sub
+
+    Private Sub btn_tab3_Click(sender As Object, e As EventArgs) Handles btn_tab3.Click
+        TabControl1.SelectTab(2)
+        lbl_where.Text = "Register Admins"
+    End Sub
+
+
 End Class

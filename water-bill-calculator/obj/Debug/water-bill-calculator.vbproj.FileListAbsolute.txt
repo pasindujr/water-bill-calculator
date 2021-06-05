@@ -25,3 +25,4 @@ C:\Users\pasin\Desktop\Git\water-bill-calculator\water-bill-calculator\bin\Debug
 C:\Users\pasin\Desktop\Git\water-bill-calculator\water-bill-calculator\bin\Debug\MySql.Data.xml
 C:\Users\pasin\Desktop\Git\water-bill-calculator\water-bill-calculator\obj\Debug\water-bill-calculator.exe.config
 C:\Users\pasin\Desktop\Git\water-bill-calculator\water-bill-calculator\obj\Debug\water-bill-calculator.vbproj.CopyComplete
+C:\Users\pasin\Desktop\Git\water-bill-calculator\water-bill-calculator\bin\Debug\FontAwesome.Sharp.dll

@@ -23,7 +23,7 @@ Partial Class Home
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.tab_regsiter = New System.Windows.Forms.TabPage()
+        Me.tab_register = New System.Windows.Forms.TabPage()
         Me.select_month = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btn_registerClear = New System.Windows.Forms.Button()
@@ -62,49 +62,58 @@ Partial Class Home
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbl_where = New System.Windows.Forms.Label()
+        Me.btn_tab1 = New FontAwesome.Sharp.IconButton()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btn_signout = New FontAwesome.Sharp.IconButton()
+        Me.btn_tab3 = New FontAwesome.Sharp.IconButton()
+        Me.btn_tab2 = New FontAwesome.Sharp.IconButton()
         Me.TabControl1.SuspendLayout()
-        Me.tab_regsiter.SuspendLayout()
+        Me.tab_register.SuspendLayout()
         Me.tab_viewDetails.SuspendLayout()
         CType(Me.dg_table, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_registerAdmins.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
-        Me.TabControl1.Controls.Add(Me.tab_regsiter)
+        Me.TabControl1.Controls.Add(Me.tab_register)
         Me.TabControl1.Controls.Add(Me.tab_viewDetails)
         Me.TabControl1.Controls.Add(Me.tab_registerAdmins)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
+        Me.TabControl1.Location = New System.Drawing.Point(78, 51)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(690, 514)
+        Me.TabControl1.Size = New System.Drawing.Size(619, 463)
         Me.TabControl1.TabIndex = 0
         '
-        'tab_regsiter
+        'tab_register
         '
-        Me.tab_regsiter.Controls.Add(Me.select_month)
-        Me.tab_regsiter.Controls.Add(Me.Label5)
-        Me.tab_regsiter.Controls.Add(Me.btn_registerClear)
-        Me.tab_regsiter.Controls.Add(Me.btn_registerSubmit)
-        Me.tab_regsiter.Controls.Add(Me.txt_units)
-        Me.tab_regsiter.Controls.Add(Me.txt_billNumber)
-        Me.tab_regsiter.Controls.Add(Me.txt_email)
-        Me.tab_regsiter.Controls.Add(Me.txt_address)
-        Me.tab_regsiter.Controls.Add(Me.txt_customerName)
-        Me.tab_regsiter.Controls.Add(Me.lbl_month)
-        Me.tab_regsiter.Controls.Add(Me.lbl_units)
-        Me.tab_regsiter.Controls.Add(Me.Label4)
-        Me.tab_regsiter.Controls.Add(Me.Label3)
-        Me.tab_regsiter.Controls.Add(Me.Label2)
-        Me.tab_regsiter.Controls.Add(Me.Label1)
-        Me.tab_regsiter.Location = New System.Drawing.Point(4, 22)
-        Me.tab_regsiter.Name = "tab_regsiter"
-        Me.tab_regsiter.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_regsiter.Size = New System.Drawing.Size(682, 488)
-        Me.tab_regsiter.TabIndex = 0
-        Me.tab_regsiter.Text = "Register Customer"
-        Me.tab_regsiter.UseVisualStyleBackColor = True
+        Me.tab_register.Controls.Add(Me.select_month)
+        Me.tab_register.Controls.Add(Me.Label5)
+        Me.tab_register.Controls.Add(Me.btn_registerClear)
+        Me.tab_register.Controls.Add(Me.btn_registerSubmit)
+        Me.tab_register.Controls.Add(Me.txt_units)
+        Me.tab_register.Controls.Add(Me.txt_billNumber)
+        Me.tab_register.Controls.Add(Me.txt_email)
+        Me.tab_register.Controls.Add(Me.txt_address)
+        Me.tab_register.Controls.Add(Me.txt_customerName)
+        Me.tab_register.Controls.Add(Me.lbl_month)
+        Me.tab_register.Controls.Add(Me.lbl_units)
+        Me.tab_register.Controls.Add(Me.Label4)
+        Me.tab_register.Controls.Add(Me.Label3)
+        Me.tab_register.Controls.Add(Me.Label2)
+        Me.tab_register.Controls.Add(Me.Label1)
+        Me.tab_register.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tab_register.Location = New System.Drawing.Point(4, 22)
+        Me.tab_register.Name = "tab_register"
+        Me.tab_register.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_register.Size = New System.Drawing.Size(611, 437)
+        Me.tab_register.TabIndex = 0
+        Me.tab_register.Text = "Register Customer"
+        Me.tab_register.UseVisualStyleBackColor = True
         '
         'select_month
         '
@@ -254,7 +263,7 @@ Partial Class Home
         Me.tab_viewDetails.Location = New System.Drawing.Point(4, 22)
         Me.tab_viewDetails.Name = "tab_viewDetails"
         Me.tab_viewDetails.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_viewDetails.Size = New System.Drawing.Size(682, 488)
+        Me.tab_viewDetails.Size = New System.Drawing.Size(611, 437)
         Me.tab_viewDetails.TabIndex = 1
         Me.tab_viewDetails.Text = "View and Update"
         Me.tab_viewDetails.UseVisualStyleBackColor = True
@@ -371,7 +380,7 @@ Partial Class Home
         '
         Me.dg_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_table.Location = New System.Drawing.Point(266, 149)
+        Me.dg_table.Location = New System.Drawing.Point(240, 149)
         Me.dg_table.Name = "dg_table"
         Me.dg_table.Size = New System.Drawing.Size(365, 249)
         Me.dg_table.TabIndex = 0
@@ -387,7 +396,7 @@ Partial Class Home
         Me.tab_registerAdmins.Controls.Add(Me.Label6)
         Me.tab_registerAdmins.Location = New System.Drawing.Point(4, 22)
         Me.tab_registerAdmins.Name = "tab_registerAdmins"
-        Me.tab_registerAdmins.Size = New System.Drawing.Size(682, 488)
+        Me.tab_registerAdmins.Size = New System.Drawing.Size(611, 437)
         Me.tab_registerAdmins.TabIndex = 2
         Me.tab_registerAdmins.Text = "Regsiter Admins"
         Me.tab_registerAdmins.UseVisualStyleBackColor = True
@@ -454,29 +463,132 @@ Partial Class Home
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Register Admins"
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.lbl_where)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(697, 77)
+        Me.Panel1.TabIndex = 2
+        '
+        'lbl_where
+        '
+        Me.lbl_where.AutoSize = True
+        Me.lbl_where.Location = New System.Drawing.Point(455, 21)
+        Me.lbl_where.Name = "lbl_where"
+        Me.lbl_where.Size = New System.Drawing.Size(93, 13)
+        Me.lbl_where.TabIndex = 0
+        Me.lbl_where.Text = "Register Customer"
+        '
+        'btn_tab1
+        '
+        Me.btn_tab1.FlatAppearance.BorderSize = 0
+        Me.btn_tab1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_tab1.ForeColor = System.Drawing.SystemColors.Control
+        Me.btn_tab1.IconChar = FontAwesome.Sharp.IconChar.UserPlus
+        Me.btn_tab1.IconColor = System.Drawing.Color.White
+        Me.btn_tab1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btn_tab1.IconSize = 40
+        Me.btn_tab1.Location = New System.Drawing.Point(4, 73)
+        Me.btn_tab1.Name = "btn_tab1"
+        Me.btn_tab1.Padding = New System.Windows.Forms.Padding(4, 0, 0, 5)
+        Me.btn_tab1.Size = New System.Drawing.Size(66, 60)
+        Me.btn_tab1.TabIndex = 0
+        Me.btn_tab1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_tab1.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(68, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.btn_signout)
+        Me.Panel2.Controls.Add(Me.btn_tab3)
+        Me.Panel2.Controls.Add(Me.btn_tab2)
+        Me.Panel2.Controls.Add(Me.btn_tab1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(72, 514)
+        Me.Panel2.TabIndex = 3
+        '
+        'btn_signout
+        '
+        Me.btn_signout.FlatAppearance.BorderSize = 0
+        Me.btn_signout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_signout.ForeColor = System.Drawing.SystemColors.Control
+        Me.btn_signout.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt
+        Me.btn_signout.IconColor = System.Drawing.Color.White
+        Me.btn_signout.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btn_signout.IconSize = 40
+        Me.btn_signout.Location = New System.Drawing.Point(3, 337)
+        Me.btn_signout.Name = "btn_signout"
+        Me.btn_signout.Padding = New System.Windows.Forms.Padding(4, 0, 0, 5)
+        Me.btn_signout.Size = New System.Drawing.Size(66, 60)
+        Me.btn_signout.TabIndex = 0
+        Me.btn_signout.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_signout.UseVisualStyleBackColor = True
+        '
+        'btn_tab3
+        '
+        Me.btn_tab3.FlatAppearance.BorderSize = 0
+        Me.btn_tab3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_tab3.ForeColor = System.Drawing.SystemColors.Control
+        Me.btn_tab3.IconChar = FontAwesome.Sharp.IconChar.UserLock
+        Me.btn_tab3.IconColor = System.Drawing.Color.White
+        Me.btn_tab3.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btn_tab3.IconSize = 40
+        Me.btn_tab3.Location = New System.Drawing.Point(3, 250)
+        Me.btn_tab3.Name = "btn_tab3"
+        Me.btn_tab3.Padding = New System.Windows.Forms.Padding(4, 0, 0, 5)
+        Me.btn_tab3.Size = New System.Drawing.Size(66, 60)
+        Me.btn_tab3.TabIndex = 0
+        Me.btn_tab3.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_tab3.UseVisualStyleBackColor = True
+        '
+        'btn_tab2
+        '
+        Me.btn_tab2.FlatAppearance.BorderSize = 0
+        Me.btn_tab2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_tab2.ForeColor = System.Drawing.SystemColors.Control
+        Me.btn_tab2.IconChar = FontAwesome.Sharp.IconChar.UserEdit
+        Me.btn_tab2.IconColor = System.Drawing.Color.White
+        Me.btn_tab2.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btn_tab2.IconSize = 40
+        Me.btn_tab2.Location = New System.Drawing.Point(3, 159)
+        Me.btn_tab2.Name = "btn_tab2"
+        Me.btn_tab2.Padding = New System.Windows.Forms.Padding(4, 0, 0, 5)
+        Me.btn_tab2.Size = New System.Drawing.Size(66, 60)
+        Me.btn_tab2.TabIndex = 0
+        Me.btn_tab2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_tab2.UseVisualStyleBackColor = True
+        '
         'Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(690, 514)
+        Me.ClientSize = New System.Drawing.Size(700, 514)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TabControl1)
         Me.IsMdiContainer = True
         Me.Name = "Home"
         Me.Text = "Home"
         Me.TabControl1.ResumeLayout(False)
-        Me.tab_regsiter.ResumeLayout(False)
-        Me.tab_regsiter.PerformLayout()
+        Me.tab_register.ResumeLayout(False)
+        Me.tab_register.PerformLayout()
         Me.tab_viewDetails.ResumeLayout(False)
         Me.tab_viewDetails.PerformLayout()
         CType(Me.dg_table, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_registerAdmins.ResumeLayout(False)
         Me.tab_registerAdmins.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents tab_regsiter As TabPage
+    Friend WithEvents tab_register As TabPage
     Friend WithEvents tab_viewDetails As TabPage
     Friend WithEvents tab_registerAdmins As TabPage
     Friend WithEvents Label5 As Label
@@ -515,4 +627,11 @@ Partial Class Home
     Friend WithEvents Label12 As Label
     Friend WithEvents lbl_updateBill As Label
     Friend WithEvents Label10 As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents btn_tab1 As FontAwesome.Sharp.IconButton
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents btn_signout As FontAwesome.Sharp.IconButton
+    Friend WithEvents btn_tab3 As FontAwesome.Sharp.IconButton
+    Friend WithEvents btn_tab2 As FontAwesome.Sharp.IconButton
+    Friend WithEvents lbl_where As Label
 End Class
