@@ -1,7 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
-Imports System.Drawing.Drawing2D
 
 Public Class Home
+    Private Property moveform As Boolean
+    Private Property moveform_mouseposition As Point
+
     Dim mySqlConnection As MySqlConnection
     Dim command As MySqlCommand
     Dim dbDataSet As New DataTable
@@ -55,10 +57,10 @@ Public Class Home
                 query = "insert into waterbill.customers (customer_name, customer_address, customer_email, water_bill_number, month, no_of_units, charge) values ('" & txt_customerName.Text & "', '" & txt_address.Text & "', '" & txt_email.Text & "', '" & txt_billNumber.Text & "', '" & select_month.Text & "', '" & txt_units.Text & "', '" & calBill(units) & "')"
                 command = New MySqlCommand(query, mySqlConnection)
                 reader = command.ExecuteReader()
-                MessageBox.Show("New customer and details added")
+                MessageBox.Show("New customer and details added", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
                 mySqlConnection.Close()
             Catch ex As Exception
-                MessageBox.Show("Enter valid unit")
+                MessageBox.Show("Enter valid unit", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
             End Try
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
@@ -83,7 +85,7 @@ Public Class Home
         Dim reader As MySqlDataReader
 
         If (txt_adminUsername.Text = "" Or txt_adminPassword.Text = "") Then
-            MessageBox.Show("Please input valid username or passowrd")
+            MessageBox.Show("Please input valid username or passowrd", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
         Else
 
             Try
@@ -92,7 +94,7 @@ Public Class Home
                 query = "insert into waterbill.login (username, password) values ('" & txt_adminUsername.Text & "', '" & txt_adminPassword.Text & "')"
                 command = New MySqlCommand(query, mySqlConnection)
                 reader = command.ExecuteReader()
-                MessageBox.Show("Welcome '" & txt_adminUsername.Text & "'")
+                MessageBox.Show("Welcome '" & txt_adminUsername.Text & "'", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
                 mySqlConnection.Close()
             Catch ex As MySqlException
                 MessageBox.Show(ex.Message)
@@ -177,50 +179,52 @@ Public Class Home
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
         Dim reader As MySqlDataReader
 
+        If txt_updateName.Text = "" Or txt_updateAddress.Text = "" Or txt_updateEmail.Text = "" Then
+            MessageBox.Show("Empty fields", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+        Else
+            Try
+                mySqlConnection.Open()
+                Dim query As String
+                query = "update waterbill.customers set customer_name ='" & txt_updateName.Text & "',customer_address='" & txt_updateAddress.Text & "',customer_email='" & txt_updateEmail.Text & "' where water_bill_number ='" & lbl_updateBill.Text & "'"
+                command = New MySqlCommand(query, mySqlConnection)
+                reader = command.ExecuteReader
+                MessageBox.Show("Details Updated", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+                mySqlConnection.Close()
+                loadTable()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
 
-        Try
-            mySqlConnection.Open()
-            Dim query As String
-            query = "update waterbill.customers set customer_name ='" & txt_updateName.Text & "',customer_address='" & txt_updateAddress.Text & "',customer_email='" & txt_updateEmail.Text & "' where water_bill_number ='" & lbl_updateBill.Text & "'"
-            command = New MySqlCommand(query, mySqlConnection)
-            reader = command.ExecuteReader
-            MessageBox.Show("Details Updated")
-            mySqlConnection.Close()
-            loadTable()
-        Catch ex As MySqlException
-            MessageBox.Show(ex.Message)
-
-        Finally
-            mySqlConnection.Dispose()
-        End Try
-
+            Finally
+                mySqlConnection.Dispose()
+            End Try
+        End If
     End Sub
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
         Dim reader As MySqlDataReader
 
+        If txt_updateName.Text = "" Or txt_updateAddress.Text = "" Or txt_updateEmail.Text = "" Then
+            MessageBox.Show("Empty fields", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+        Else
+            Try
+                mySqlConnection.Open()
+                Dim query As String
+                query = "delete from waterbill.customers where water_bill_number ='" & lbl_updateBill.Text & "'"
+                command = New MySqlCommand(query, mySqlConnection)
+                reader = command.ExecuteReader
+                MessageBox.Show("Details Deleted", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+                mySqlConnection.Close()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
 
-        Try
-            mySqlConnection.Open()
-            Dim query As String
-            query = "delete from waterbill.customers where water_bill_number ='" & lbl_updateBill.Text & "'"
-            command = New MySqlCommand(query, mySqlConnection)
-            reader = command.ExecuteReader
-            MessageBox.Show("Details Deleted")
-            mySqlConnection.Close()
-        Catch ex As MySqlException
-            MessageBox.Show(ex.Message)
-
-        Finally
-            mySqlConnection.Dispose()
-        End Try
-        loadTable()
+            Finally
+                mySqlConnection.Dispose()
+            End Try
+            loadTable()
+        End If
     End Sub
 
-    Private Sub tab_viewDetails_Click(sender As Object, e As EventArgs) Handles tab_viewDetails.Click
-
-    End Sub
 
     Private Sub txt_billNumber_TextChanged(sender As Object, e As EventArgs) Handles txt_billNumber.TextChanged
 
@@ -326,5 +330,53 @@ Public Class Home
         tooltip.SetToolTip(btn_signout, "Sign Out")
     End Sub
 
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
+        If e.Button = MouseButtons.Left Then
+            moveform = True
+            Me.Cursor = Cursors.Default
+            moveform_mouseposition = e.Location
+        End If
+    End Sub
 
+    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs) Handles Panel1.MouseUp
+        If e.Button = MouseButtons.Left Then
+            moveform = False
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
+        If moveform Then
+            Me.Location = Me.Location + (e.Location - moveform_mouseposition)
+        End If
+    End Sub
+
+    Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles btn_about.Click
+        TabControl1.SelectTab(3)
+        lbl_where.Text = "About"
+    End Sub
+
+    Private Sub btn_about_MouseHover(sender As Object, e As EventArgs) Handles btn_about.MouseHover
+        Dim tooltip As New ToolTip()
+        tooltip.UseFading = True
+        tooltip.UseAnimation = True
+        tooltip.ShowAlways = True
+        tooltip.AutoPopDelay = 5000
+        tooltip.InitialDelay = 500
+        tooltip.ReshowDelay = 100
+        tooltip.SetToolTip(btn_about, "About")
+    End Sub
+
+    Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
+        PrintPreviewDialog1.Document = PrintDocument1
+        PrintPreviewDialog1.PrintPreviewControl.Zoom = 1
+        PrintPreviewDialog1.ShowDialog()
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Dim imagebmp As New Bitmap(Me.dg_table.Width, Me.dg_table.Height)
+        dg_table.DrawToBitmap(imagebmp, New Rectangle(0, 0, Me.dg_table.Width, Me.dg_table.Height))
+        e.Graphics.DrawImage(imagebmp, 120, 20)
+
+    End Sub
 End Class

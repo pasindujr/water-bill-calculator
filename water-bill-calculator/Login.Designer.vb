@@ -23,6 +23,7 @@ Partial Class Login
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         Me.txt_loginPassword = New System.Windows.Forms.TextBox()
         Me.txt_loginUsername = New System.Windows.Forms.TextBox()
         Me.lbl_loginUsername = New System.Windows.Forms.Label()
@@ -34,9 +35,11 @@ Partial Class Login
         Me.timer_datetime = New System.Windows.Forms.Timer(Me.components)
         Me.IconPicture_close = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPicture_minimize = New FontAwesome.Sharp.IconPictureBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPicture_close, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPicture_minimize, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txt_loginPassword
@@ -45,7 +48,7 @@ Partial Class Login
         Me.txt_loginPassword.Location = New System.Drawing.Point(232, 231)
         Me.txt_loginPassword.Name = "txt_loginPassword"
         Me.txt_loginPassword.Size = New System.Drawing.Size(100, 22)
-        Me.txt_loginPassword.TabIndex = 0
+        Me.txt_loginPassword.TabIndex = 1
         Me.txt_loginPassword.UseSystemPasswordChar = True
         '
         'txt_loginUsername
@@ -83,7 +86,7 @@ Partial Class Login
         Me.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_login.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_login.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btn_login.Location = New System.Drawing.Point(193, 299)
+        Me.btn_login.Location = New System.Drawing.Point(200, 299)
         Me.btn_login.Name = "btn_login"
         Me.btn_login.Size = New System.Drawing.Size(75, 27)
         Me.btn_login.TabIndex = 2
@@ -118,7 +121,7 @@ Partial Class Login
         '
         Me.lbl_datatime.AutoSize = True
         Me.lbl_datatime.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_datatime.Location = New System.Drawing.Point(305, 412)
+        Me.lbl_datatime.Location = New System.Drawing.Point(228, 414)
         Me.lbl_datatime.Name = "lbl_datatime"
         Me.lbl_datatime.Size = New System.Drawing.Size(113, 20)
         Me.lbl_datatime.TabIndex = 5
@@ -151,6 +154,15 @@ Partial Class Login
         Me.IconPicture_minimize.TabIndex = 6
         Me.IconPicture_minimize.TabStop = False
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.btn_login)
+        Me.Panel1.Controls.Add(Me.lbl_datatime)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(482, 458)
+        Me.Panel1.TabIndex = 4
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -159,21 +171,23 @@ Partial Class Login
         Me.ClientSize = New System.Drawing.Size(484, 461)
         Me.Controls.Add(Me.IconPicture_minimize)
         Me.Controls.Add(Me.IconPicture_close)
-        Me.Controls.Add(Me.lbl_datatime)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.IconPictureBox1)
-        Me.Controls.Add(Me.btn_login)
         Me.Controls.Add(Me.lbl_loginPassword)
         Me.Controls.Add(Me.lbl_loginUsername)
         Me.Controls.Add(Me.txt_loginUsername)
         Me.Controls.Add(Me.txt_loginPassword)
+        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPicture_close, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPicture_minimize, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -190,4 +204,5 @@ Partial Class Login
     Friend WithEvents timer_datetime As Timer
     Friend WithEvents IconPicture_close As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents IconPicture_minimize As FontAwesome.Sharp.IconPictureBox
+    Friend WithEvents Panel1 As Panel
 End Class

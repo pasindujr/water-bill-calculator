@@ -2,6 +2,9 @@
 
 
 Public Class Login
+    Private Property moveform As Boolean
+    Private Property moveform_mouseposition As Point
+
     Dim mySqlConnection As MySqlConnection
     Dim command As MySqlCommand
 
@@ -30,10 +33,10 @@ Public Class Login
                 Me.Hide()
 
             ElseIf count > 1 Then
-                MessageBox.Show("Duplicate username or password")
+                MessageBox.Show("Duplicate username or password", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
 
             Else
-                MessageBox.Show("Incorrect username or password")
+                MessageBox.Show("Incorrect username or password", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
 
             End If
 
@@ -69,5 +72,26 @@ Public Class Login
 
     Private Sub IconPicture_minimize_Click(sender As Object, e As EventArgs) Handles IconPicture_minimize.Click
         Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs) Handles Panel1.MouseUp
+        If e.Button = MouseButtons.Left Then
+            moveform = False
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
+        If e.Button = MouseButtons.Left Then
+            moveform = True
+            Me.Cursor = Cursors.Default
+            moveform_mouseposition = e.Location
+        End If
+    End Sub
+
+    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
+        If moveform Then
+            Me.Location = Me.Location + (e.Location - moveform_mouseposition)
+        End If
     End Sub
 End Class
