@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Drawing.Drawing2D
 
 Public Class Home
     Dim mySqlConnection As MySqlConnection
@@ -7,6 +8,8 @@ Public Class Home
 
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadTable()
+        Login.timer_datetime.Enabled = True
+        Dim ellipseRadius As New Drawing2D.GraphicsPath
 
     End Sub
 
@@ -18,7 +21,7 @@ Public Class Home
             charge = 5 * 12 + (units - 5) * 16
         ElseIf (units <= 15) Then
             charge = 5 * 12 + 5 * 16 + (units - 10) * 20
-        ElseIf (units <= 20) Then
+        ElseIf (units <= 10) Then
             charge = 5 * 12 + 5 * 16 + 5 * 20 + (units - 15) * 40
         ElseIf (units <= 25) Then
             charge = 5 * 12 + 5 * 16 + 5 * 20 + 5 * 40 + (units - 20) * 58
@@ -79,20 +82,25 @@ Public Class Home
         mySqlConnection.ConnectionString = "server=localhost;userid=root;password=1234;database=waterbill"
         Dim reader As MySqlDataReader
 
-        Try
-            mySqlConnection.Open()
-            Dim query As String
-            query = "insert into waterbill.login (username, password) values ('" & txt_adminUsername.Text & "', '" & txt_adminPassword.Text & "')"
-            command = New MySqlCommand(query, mySqlConnection)
-            reader = command.ExecuteReader()
-            MessageBox.Show("Welcome '" & txt_adminUsername.Text & "'")
-            mySqlConnection.Close()
-        Catch ex As MySqlException
-            MessageBox.Show(ex.Message)
+        If (txt_adminUsername.Text = "" Or txt_adminPassword.Text = "") Then
+            MessageBox.Show("Please input valid username or passowrd")
+        Else
 
-        Finally
-            mySqlConnection.Dispose()
-        End Try
+            Try
+                mySqlConnection.Open()
+                Dim query As String
+                query = "insert into waterbill.login (username, password) values ('" & txt_adminUsername.Text & "', '" & txt_adminPassword.Text & "')"
+                command = New MySqlCommand(query, mySqlConnection)
+                reader = command.ExecuteReader()
+                MessageBox.Show("Welcome '" & txt_adminUsername.Text & "'")
+                mySqlConnection.Close()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
+
+            Finally
+                mySqlConnection.Dispose()
+            End Try
+        End If
     End Sub
 
     Private Sub btn_registerClear_Click(sender As Object, e As EventArgs) Handles btn_registerClear.Click
@@ -235,6 +243,7 @@ Public Class Home
 
     Private Sub btn_tab1_Click(sender As Object, e As EventArgs) Handles btn_tab1.Click
         TabControl1.SelectTab(0)
+        lbl_where.Text = "Register Customers"
     End Sub
 
     Private Sub btn_tab2_Click(sender As Object, e As EventArgs) Handles btn_tab2.Click
@@ -245,6 +254,76 @@ Public Class Home
     Private Sub btn_tab3_Click(sender As Object, e As EventArgs) Handles btn_tab3.Click
         TabControl1.SelectTab(2)
         lbl_where.Text = "Register Admins"
+    End Sub
+
+    Private Sub btn_signout_Click(sender As Object, e As EventArgs) Handles btn_signout.Click
+        Dim response As Integer
+        response = MessageBox.Show("Are you sure you want to sign out?", "Sign Out application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If response = vbYes Then
+            Login.Show()
+            Me.Hide()
+            Login.txt_loginPassword.Clear()
+            Login.txt_loginUsername.Clear()
+        End If
+
+    End Sub
+
+    Private Sub IconPicture_close_Click(sender As Object, e As EventArgs) Handles IconPicture_close.Click
+        Dim response As Integer
+        response = MessageBox.Show("Are you sure you want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If response = vbYes Then
+            Application.ExitThread()
+        End If
+    End Sub
+
+    Private Sub IconPicture_minimize_Click(sender As Object, e As EventArgs) Handles IconPicture_minimize.Click
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub btn_tab1_MouseHover(sender As Object, e As EventArgs) Handles btn_tab1.MouseHover
+        Dim tooltip As New ToolTip()
+        tooltip.UseFading = True
+        tooltip.UseAnimation = True
+        tooltip.ShowAlways = True
+        tooltip.AutoPopDelay = 5000
+        tooltip.InitialDelay = 500
+        tooltip.ReshowDelay = 100
+        tooltip.SetToolTip(btn_tab1, "Regsiter Members")
+    End Sub
+
+    Private Sub btn_tab2_MouseHover(sender As Object, e As EventArgs) Handles btn_tab2.MouseHover
+        Dim tooltip As New ToolTip()
+        tooltip.UseFading = True
+        tooltip.UseAnimation = True
+        tooltip.ShowAlways = True
+        tooltip.AutoPopDelay = 5000
+        tooltip.InitialDelay = 500
+        tooltip.ReshowDelay = 100
+        tooltip.SetToolTip(btn_tab2, "View and Update")
+    End Sub
+
+    Private Sub btn_tab3_MouseHover(sender As Object, e As EventArgs) Handles btn_tab3.MouseHover
+        Dim tooltip As New ToolTip()
+        tooltip.UseFading = True
+        tooltip.UseAnimation = True
+        tooltip.ShowAlways = True
+        tooltip.AutoPopDelay = 5000
+        tooltip.InitialDelay = 500
+        tooltip.ReshowDelay = 100
+        tooltip.SetToolTip(btn_tab3, "Regsiter Admins")
+    End Sub
+
+    Private Sub btn_signout_MouseHover(sender As Object, e As EventArgs) Handles btn_signout.MouseHover
+        Dim tooltip As New ToolTip()
+        tooltip.UseFading = True
+        tooltip.UseAnimation = True
+        tooltip.ShowAlways = True
+        tooltip.AutoPopDelay = 5000
+        tooltip.InitialDelay = 500
+        tooltip.ReshowDelay = 100
+        tooltip.SetToolTip(btn_signout, "Sign Out")
     End Sub
 
 

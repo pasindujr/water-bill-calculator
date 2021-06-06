@@ -46,4 +46,28 @@ Public Class Login
             mySqlConnection.Dispose()
         End Try
     End Sub
+
+
+
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        timer_datetime.Enabled = True
+    End Sub
+
+    Private Sub timer_datetime_Tick(sender As Object, e As EventArgs) Handles timer_datetime.Tick
+        lbl_datatime.Text = Date.Now.ToString("dd MMM yyy hh:mm:ss")
+        Home.lbl_datetime.Text = Date.Now.ToString("dd MMM yyy hh:mm:ss")
+    End Sub
+
+    Private Sub IconPicture_close_Click(sender As Object, e As EventArgs) Handles IconPicture_close.Click
+        Dim response As Integer
+        response = MessageBox.Show("Are you sure you want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If response = vbYes Then
+            Application.ExitThread()
+        End If
+    End Sub
+
+    Private Sub IconPicture_minimize_Click(sender As Object, e As EventArgs) Handles IconPicture_minimize.Click
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
 End Class
